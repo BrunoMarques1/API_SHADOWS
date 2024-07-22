@@ -5,7 +5,7 @@ from sqlalchemy.orm import sessionmaker, registry
 from pydantic import BaseModel
 from dotenv import load_dotenv
 import os
-
+ 
 
 load_dotenv()
 IP_DB = os.getenv("IP_DB")
