@@ -3,9 +3,14 @@ from sqlalchemy import create_engine
 from sqlalchemy import Column, String, Integer
 from sqlalchemy.orm import sessionmaker, registry
 from pydantic import BaseModel
+from dotenv import load_dotenv
+import os
 
 
-engine = create_engine('mysql+pymysql://root@192.168.1.62:3306/cinema')
+load_dotenv()
+IP_DB = os.getenv("IP_DB")
+
+engine = create_engine(f'mysql+pymysql://root@{IP_DB}:3306/cinema')
 mapper_registy = registry()
 Base = mapper_registy.generate_base()
 Session = sessionmaker(bind=engine)
