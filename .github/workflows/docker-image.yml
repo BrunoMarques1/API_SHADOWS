@@ -15,6 +15,9 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
 
+    - name: Create .env file
+      run: echo "IP_DB=${{ secrets.IP_DB }}" > .env
+
     - name: Login to Docker Hub
       run: echo "${{ secrets.PASSWD_DOCKERHUB }}" | docker login -u "${{ secrets.USER_DOCKERHUB }}" --password-stdin
 
