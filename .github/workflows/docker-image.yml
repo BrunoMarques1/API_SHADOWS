@@ -16,8 +16,7 @@ jobs:
       uses: docker/setup-buildx-action@v1
 
     - name: Login to Docker Hub
-      run: docker login --username=${{ secrets.USER_DOCKERHUB }} --password=${{ secrets.PASSWD_DOCKERHUB }}
-
+      run: echo "${{ secrets.USER_DOCKERHUB }}" | docker login -u "${{ secrets.PASSWD_DOCKERHUB }}" --password-stdin
 
     - name: Build Docker image
       run: docker build -t brunomarques1/fastapi:latest .
