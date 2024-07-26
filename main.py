@@ -33,7 +33,13 @@ class Filmes(Base):
         return f"Filme [titulo={self.titulo}, ano={self.ano}]"
 
 
+
 @app.get("/")
+async def get():
+    return ("OLÁ MUNDO!")
+
+
+@app.get("/get")
 async def get():
     data = session.query(Filmes).all()
     return (data)
