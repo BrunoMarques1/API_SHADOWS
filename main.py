@@ -10,7 +10,7 @@ import os
 load_dotenv()
 IP_DB = os.getenv("IP_DB")
 
-engine = create_engine(f'mysql+pymysql://root:123@mysql:3306/cinema')
+engine = create_engine(f'mysql+pymysql://bruno:123@mysql:3306/cinema')
 mapper_registy = registry()
 Base = mapper_registy.generate_base()
 Session = sessionmaker(bind=engine)
