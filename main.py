@@ -37,23 +37,23 @@ class Filmes(Base):
 async def get():
     return "OLÁ MUNDO!"
 
-@app.get("/get")
+@app.get("/db")
 async def get():
     data = session.query(Filmes).all()
     return data
 
-@app.post("/")
+@app.post("/db")
 async def post(body: Body):
     data_insert = Filmes(titulo=body.titulo, genero=body.genero, ano=body.ano)
     session.add(data_insert)
     session.commit()
 
-@app.delete("/")
+@app.delete("/db")
 async def delete(body: Body):
     session.query(Filmes).filter(Filmes.titulo == body.titulo).delete()
     session.commit()
 
-@app.put("/titulo={titulo}")
+@app.put("/db/titulo={titulo}")
 async def put(body: Body, titulo):
     session.query(Filmes).filter(Filmes.titulo == titulo).update({"titulo": body.titulo, "genero": body.genero, "ano": body.ano})
     session.commit()
